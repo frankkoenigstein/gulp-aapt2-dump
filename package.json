@@ -1,0 +1,50 @@
+{
+  "name": "gulp-aapt2-dump",
+  "version": "0.0.0",
+  "description": "AAPT2 dump pipe for [Vinyl](https://github.com/gulpjs/vinyl) streams.",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "prettier --check \"**/*.{ts,js,css,html,scss}\" && npm run lint && npm test",
+    "build": "rimraf dist && tsc",
+    "lint": "tslint -p . -c tslint.json 'src/**/*.ts'",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "files": [
+    "dist/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankkoenigstein/gulp-aapt2-dump.git"
+  },
+  "keywords": [
+    "gulp",
+    "aapt2",
+    "dump"
+  ],
+  "author": "frankkoenigstein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frankkoenigstein/gulp-aapt2-dump/issues"
+  },
+  "homepage": "https://github.com/frankkoenigstein/gulp-aapt2-dump#readme",
+  "devDependencies": {
+    "@types/jest": "^25.1.0",
+    "@types/node": "^13.5.0",
+    "@types/through2": "^2.0.34",
+    "@types/vinyl": "^2.0.4",
+    "chalk": "^3.0.0",
+    "gulp": "^4.0.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.1",
+    "ts-jest": "^25.0.0",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "through2": "^3.0.1"
+  }
+}
