@@ -1,6 +1,6 @@
 {
   "name": "gulp-aapt2-dump",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "AAPT2 dump pipe for [Vinyl](https://github.com/gulpjs/vinyl) streams.",
   "main": "dist/index.js",
   "scripts": {
