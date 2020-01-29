@@ -20,7 +20,7 @@
 
 ## Usage
 
-Calls `aapt2 dump ${subCommand}` for streamed files and passes `sdtout` to the stream.
+Calls `aapt2 dump ${subCommand}` for streamed files and passes `stdout` to the stream.
 
 ### Declaration
 
