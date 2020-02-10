@@ -35,10 +35,10 @@ function aapt2Dump(
   return through.obj(
     (
       file: Vinyl,
-      encoding: string,
+      _encoding: string,
       callback: (err: Error, chunk: Vinyl) => void
     ) => {
-      let aapt2Cmd = `aapt2 dump ${subCommand} ${file.path}`;
+      let aapt2Cmd = `aapt2 dump ${subCommand} "${file.path}"`;
 
       if (options) {
         if (options.noValues) {
@@ -46,7 +46,7 @@ function aapt2Dump(
         }
 
         if (options.file) {
-          aapt2Cmd += ` --file ${options.file}`;
+          aapt2Cmd += ` --file "${options.file}"`;
         }
 
         if (options.v) {
@@ -80,52 +80,5 @@ function aapt2Dump(
     }
   );
 }
-
-// function parseDumpOutput(subCommand: DumpSubCommand, stdout: string): object {
-//   if (!stdout) {
-//     return {};
-//   }
-
-//   const lines: string[] = stdout.match(/[^\r\n]+/g);
-
-//   switch (subCommand) {
-//     case 'badging':
-//       return lines
-//         .map((line: string): string[] => line.match(/^\s*([^:\s]+)[:]?(.*)/))
-//         .reduce((acc: { [key: string]: any }, match: string[]): object => {
-//           const key: string = match[1]; // first group
-//           const value = parseValue(match[2]); // second group
-
-//           // in case of duplicate keys, create array
-//           if (acc[key]) {
-//             // if already an array just push new value
-//             if (Array.isArray(acc[key])) {
-//               acc[key].push(value);
-//             } else {
-//               // create array with values
-//               acc[key] = [acc[key], value];
-//             }
-//           } else {
-//             acc[key] = value;
-//           }
-
-//           return acc;
-//         }, {});
-
-//       break;
-//   }
-
-//   return {};
-// }
-
-// function parseValue(
-//   value: string
-// ): string | string[] | { [key: string]: string } {
-//   if (!value) {
-//     return value;
-//   }
-
-//   return value.split(' ');
-// }
 
 export default aapt2Dump;
