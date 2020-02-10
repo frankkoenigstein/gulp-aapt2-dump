@@ -50,7 +50,7 @@ describe('aapt2 dump', () => {
       transform.on('data', () => {
         expect(execSpy).toHaveBeenCalledTimes(1);
         expect(execSpy).toHaveBeenCalledWith(
-          `aapt2 dump ${subCommand} ${streamInput.path}`,
+          `aapt2 dump ${subCommand} "${streamInput.path}"`,
           expect.any(Function)
         );
         done();
@@ -64,11 +64,11 @@ describe('aapt2 dump', () => {
 
       it.each<[DumpOptions, string]>([
         [{ noValues: true }, ' --no-values'],
-        [{ file: 'murx.txt' }, ' --file murx.txt'],
+        [{ file: 'murx.txt' }, ' --file "murx.txt"'],
         [{ v: true }, ' -v'],
         [
           { noValues: true, file: 'murx.txt', v: true },
-          ' --no-values --file murx.txt -v'
+          ' --no-values --file "murx.txt" -v'
         ]
       ])('should use options %o', (options: DumpOptions, expected: string) => {
         const streamOptions = new Readable({
@@ -83,7 +83,7 @@ describe('aapt2 dump', () => {
           transformOptions.on('data', () => {
             expect(execSpy).toHaveBeenCalledTimes(1);
             expect(execSpy).toHaveBeenCalledWith(
-              `aapt2 dump ${subCommand} ${streamInput.path}${expected}`,
+              `aapt2 dump ${subCommand} "${streamInput.path}"${expected}`,
               expect.any(Function)
             );
 

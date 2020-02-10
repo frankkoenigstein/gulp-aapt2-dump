@@ -1,12 +1,13 @@
 {
   "name": "gulp-aapt2-dump",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "AAPT2 dump pipe for [Vinyl](https://github.com/gulpjs/vinyl) streams.",
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "prettier --check \"**/*.{ts,js,css,html,scss}\" && npm run lint && npm test",
     "build": "rimraf dist && tsc",
     "lint": "tslint -p . -c tslint.json 'src/**/*.ts'",
+    "prepublish": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch"
   },
